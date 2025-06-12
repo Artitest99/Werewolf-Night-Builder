@@ -7,7 +7,7 @@
       :class="{ selected: selectedCharacters.includes(character) }"
       @click="toggleCharacter(character)"
     >
-      <img :src="`/images/${character}.png`" :alt="character" />
+      <img :src="calcCharacterImg(character)" :alt="character" />
       <span>{{ character }}</span>
     </div>
 
@@ -54,6 +54,10 @@ export default {
     },
     confirmSelection() {
       this.$emit('characters-selected', this.selectedCharacters)
+    },
+    calcCharacterImg(character){
+      const base_url = import.meta.env.BASE_URL
+      return `${base_url}images/${character}.png`
     }
   }
 }
@@ -74,7 +78,7 @@ button.primary {
   border: none;
   color: white;
   padding: 12px 24px;
-  font-size: 1.1rem;
+  font-size: 1.0rem;
   border-radius: 10px;
   cursor: pointer;
   transition: background 0.2s ease;

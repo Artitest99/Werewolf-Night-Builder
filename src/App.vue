@@ -101,8 +101,9 @@ export default {
       this.audioTimeline = timeline
     },
     async playAudio() {
+      const base_url = import.meta.env.BASE_URL
       for (const file of this.audioTimeline) {
-        await this.playSound(`/audio/${file}`)
+        await this.playSound(`${base_url}/audio/${file}`)
         await this.sleep(this.delayBetweenClips)
       }
     },
